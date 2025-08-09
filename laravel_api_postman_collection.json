@@ -1,0 +1,166 @@
+{
+    "info": {
+        "name": "Laravel API Project",
+        "_postman_id": "12345678-abcd-efgh-ijkl-1234567890ab",
+        "description": "Postman collection for Laravel API routes including authentication and admin routes.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth - Login",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/login",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "login"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"email\": \"\",\n    \"password\": \"\"\n}"
+                }
+            }
+        },
+        {
+            "name": "Auth - Register",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/register",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "register"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"name\": \"\",\n    \"email\": \"\",\n    \"password\": \"\"\n}"
+                }
+            }
+        },
+        {
+            "name": "User Profile (JWT Protected)",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{jwt_token}}"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/user-profile",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "user-profile"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Posts - List",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "{{base_url}}/posts",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "posts"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Posts - Create (Sanctum Protected)",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{sanctum_token}}"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/posts",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "posts"
+                    ]
+                },
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"title\": \"\",\n    \"content\": \"\"\n}"
+                }
+            }
+        },
+        {
+            "name": "Admin - Dashboard",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{admin_token}}"
+                    }
+                ],
+                "url": {
+                    "raw": "{{base_url}}/admin/dashboard",
+                    "host": [
+                        "{{base_url}}"
+                    ],
+                    "path": [
+                        "admin",
+                        "dashboard"
+                    ]
+                }
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000/api"
+        },
+        {
+            "key": "jwt_token",
+            "value": ""
+        },
+        {
+            "key": "sanctum_token",
+            "value": ""
+        },
+        {
+            "key": "admin_token",
+            "value": ""
+        }
+    ]
+}
